@@ -16,16 +16,16 @@ def crea_baraja():
 
     return baraja
 
-def mezclar(b):#falta arreglo para que no duplique listas
+def mezclar(b):
     br = []
-    i = 0
-    while i < 40:
-        n = random.randint(0,39)
+
+    while len(br) != len(b):    
+        n = random.randint(0,len(b)-1)
         while b[n] in br:
             n = random.randint(0,39)
         br.append(b[n])
-        i += 1
-    b = br
+    
+    b[:] = br#recorre índice a índice y sustituye
     return b 
     
 
@@ -41,5 +41,10 @@ def repartir(b, players, cards):
     return res
 
 
+
+def invertir(b):
+    for i in range(len(b)//2):
+        aux = b[i]
+        b[-1-i] = aux
 
 """falta subir proyecto en git"""
